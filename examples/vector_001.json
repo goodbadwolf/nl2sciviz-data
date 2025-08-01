@@ -1,0 +1,36 @@
+{
+  "id": "vector_001",
+  "domain": "cfd",
+  "query": "Show the flow",
+  "valid_interpretations": [
+    {
+      "schema_version": "0.1.0",
+      "vis_type": "streamlines",
+      "field": "velocity",
+      "seed_strategy": "uniform",
+      "num_seeds": 100,
+      "colormap": "viridis"
+    },
+    {
+      "schema_version": "0.1.0",
+      "vis_type": "glyphs",
+      "field": "velocity",
+      "glyph_type": "arrow",
+      "scale": 0.1,
+      "colormap": "viridis"
+    },
+    {
+      "schema_version": "0.1.0",
+      "vis_type": "slice",
+      "field": "velocity_magnitude",
+      "slice_position": 0.5,
+      "colormap": "viridis"
+    }
+  ],
+  "metadata": {
+    "difficulty": "medium",
+    "dataset": "flow_simulation",
+    "demonstrates": "ambiguity_handling",
+    "ambiguity_type": "technique_selection"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "iso_001",
+  "domain": "cfd",
+  "short_description": "Turbulent flow around a cylinder",
+  "long_description": "Large eddy simulation (LES) of turbulent flow around a circular cylinder at Reynolds number 3900. The dataset captures the vortex shedding and pressure fluctuations in the wake region.",
+  "query": "Increase the isosurface area by 50%",
+  "ground_truth": {
+    "schema_version": "0.1.0",
+    "vis_type": "isosurface",
+    "field": "pressure",
+    "isovalue": 92000,
+    "color_by": "temperature",
+    "colormap": "viridis"
+  },
+  "artifacts": [
+    {
+      "type": "synthetic_data",
+      "name": "iso_pressure_field",
+      "synthetic_type": "perlin",
+      "dimensions": [
+        40,
+        40,
+        40
+      ],
+      "bounds": [
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "fields": {
+        "pressure": {
+          "type": "derived",
+          "source_field": "perlin_noise",
+          "operation": "scale",
+          "scale": 40000,
+          "offset": 100000
+        },
+        "temperature": {
+          "type": "derived",
+          "source_field": "perlin_noise",
+          "operation": "scale",
+          "scale": 30,
+          "offset": 290
+        }
+      }
+    },
+    {
+      "type": "visualization",
+      "name": "reference_isosurface",
+      "source": "iso_pressure_field",
+      "specification": {
+        "schema_version": "0.1.0",
+        "vis_type": "isosurface",
+        "field": "pressure",
+        "isovalue": 80000,
+        "color_by": "temperature",
+        "colormap": "viridis"
+      }
+    },
+    {
+      "type": "visualization",
+      "name": "increased_isosurface",
+      "source": "iso_pressure_field",
+      "specification": {
+        "schema_version": "0.1.0",
+        "vis_type": "isosurface",
+        "field": "pressure",
+        "isovalue": 92000,
+        "color_by": "temperature",
+        "colormap": "viridis"
+      }
+    }
+  ],
+  "metadata": {
+    "difficulty": "medium",
+    "dataset": "pressure_field",
+    "demonstrates": "parameter_optimization",
+    "reference_surface_area": 12.5,
+    "target_surface_area": 18.75,
+    "notes": "The reference isosurface at 100000 Pa has a certain surface area. To increase it by 50%, the isovalue needs to be adjusted to 92000 Pa based on the pressure distribution."
+  }
+}

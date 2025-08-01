@@ -1,0 +1,63 @@
+{
+  "id": "multi_001",
+  "domain": "medical",
+  "conversation": [
+    {
+      "turn": 1,
+      "query": "Create an isosurface of the density field",
+      "ground_truth": {
+        "schema_version": "0.1.0",
+        "vis_type": "isosurface",
+        "field": "density",
+        "isovalue": 1200,
+        "colormap": "bone",
+        "opacity": 0.8
+      },
+      "data_queries": [
+        {
+          "type": "field_statistics",
+          "field": "density",
+          "response": {"min": 0, "max": 3000, "mean": 800}
+        }
+      ]
+    },
+    {
+      "turn": 2,
+      "query": "Increase the visible surface area by 50%",
+      "ground_truth": {
+        "schema_version": "0.1.0",
+        "vis_type": "isosurface",
+        "field": "density",
+        "isovalue": 950,
+        "colormap": "bone",
+        "opacity": 0.8
+      },
+      "data_queries": [
+        {
+          "type": "compute_property",
+          "property": "surface_area",
+          "parameters": {"field": "density", "isovalue": 1200},
+          "response": {"value": 45.2, "units": "cm^2"}
+        },
+        {
+          "type": "compute_property",
+          "property": "surface_area",
+          "parameters": {"field": "density", "isovalue": 1000},
+          "response": {"value": 58.3, "units": "cm^2"}
+        },
+        {
+          "type": "compute_property",
+          "property": "surface_area",
+          "parameters": {"field": "density", "isovalue": 950},
+          "response": {"value": 67.8, "units": "cm^2"}
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "difficulty": "hard",
+    "dataset": "medical_scan",
+    "demonstrates": "geometric_goal_iteration",
+    "optimal_turns": 2
+  }
+}

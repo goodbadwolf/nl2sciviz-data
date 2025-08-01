@@ -1,0 +1,60 @@
+{
+  "id": "cfd_001",
+  "domain": "cfd",
+  "short_description": "CFD simulation of flow over an aircraft wing",
+  "long_description": "Computational fluid dynamics simulation showing pressure and temperature distribution around a NACA 4412 airfoil at Mach 0.3. The simulation captures the pressure gradient and temperature variations due to compressibility effects.",
+  "query": "Show an isosurface of pressure at 100000 Pa colored by temperature",
+  "ground_truth": {
+    "schema_version": "0.1.0",
+    "vis_type": "isosurface",
+    "field": "pressure",
+    "isovalue": 100000,
+    "color_by": "temperature",
+    "colormap": "coolwarm",
+    "color_range": [250, 350]
+  },
+  "artifacts": [
+    {
+      "type": "synthetic_data",
+      "name": "cfd_perlin_field",
+      "synthetic_type": "perlin",
+      "dimensions": [50, 50, 50],
+      "bounds": [-1, 1, -1, 1, -1, 1],
+      "fields": {
+        "pressure": {
+          "type": "derived",
+          "source_field": "perlin_noise",
+          "operation": "scale",
+          "scale": 50000,
+          "offset": 100000
+        },
+        "temperature": {
+          "type": "derived",
+          "source_field": "perlin_noise",
+          "operation": "scale",
+          "scale": 50,
+          "offset": 300
+        }
+      }
+    },
+    {
+      "type": "visualization",
+      "name": "ground_truth_render",
+      "source": "cfd_perlin_field",
+      "specification": {
+        "schema_version": "0.1.0",
+        "vis_type": "isosurface",
+        "field": "pressure",
+        "isovalue": 100000,
+        "color_by": "temperature",
+        "colormap": "coolwarm",
+        "color_range": [250, 350]
+      }
+    }
+  ],
+  "metadata": {
+    "difficulty": "easy",
+    "dataset": "wing_simulation",
+    "demonstrates": "basic_capability"
+  }
+}
