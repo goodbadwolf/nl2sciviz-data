@@ -1,0 +1,28 @@
+{
+  "id": "cfd_002",
+  "dataset": "disk_out_ref",
+  "query": "This has isosurfaces of pressure, viewed from position [25, 15, 20] looking at the origin with Z-up orientation. Change the color of the isosurfaces to temperature, keeping everything else the same",
+  "input_image": "data/ground_truth_images/cfd_001/target_0.png",
+  "target_specs": [
+    {
+      "vis_type": "isosurface",
+      "field": "Pres",
+      "isovalues": [
+        0.01, 0.011, 0.012, 0.013, 0.014, 0.015, 0.016, 0.017, 0.018, 0.019,
+        0.02
+      ],
+      "color_by": "Temp",
+      "colormap": "coolwarm",
+      "color_range": [300, 800],
+      "camera": {
+        "position": [25, 15, 20],
+        "focal_point": [0, 0, 0],
+        "view_up": [0, 0, 1]
+      }
+    }
+  ],
+  "metadata": {
+    "difficulty": "medium",
+    "demonstrates": "image_based_modification"
+  }
+}

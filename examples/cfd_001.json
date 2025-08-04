@@ -1,60 +1,27 @@
 {
   "id": "cfd_001",
-  "domain": "cfd",
-  "short_description": "CFD simulation of flow over an aircraft wing",
-  "long_description": "Computational fluid dynamics simulation showing pressure and temperature distribution around a NACA 4412 airfoil at Mach 0.3. The simulation captures the pressure gradient and temperature variations due to compressibility effects.",
-  "query": "Show an isosurface of pressure at 100000 Pa colored by temperature",
-  "ground_truth": {
-    "schema_version": "0.1.0",
-    "vis_type": "isosurface",
-    "field": "pressure",
-    "isovalue": 100000,
-    "color_by": "temperature",
-    "colormap": "coolwarm",
-    "color_range": [250, 350]
-  },
-  "artifacts": [
+  "dataset": "disk_out_ref",
+  "query": "Show isosurfaces of pressure at values 0.010 to 0.020, step 0.001, viewed from position [25, 15, 20] looking at the origin with Z-up orientation",
+  "target_specs": [
     {
-      "type": "synthetic_data",
-      "name": "cfd_perlin_field",
-      "synthetic_type": "perlin",
-      "dimensions": [50, 50, 50],
-      "bounds": [-1, 1, -1, 1, -1, 1],
-      "fields": {
-        "pressure": {
-          "type": "derived",
-          "source_field": "perlin_noise",
-          "operation": "scale",
-          "scale": 50000,
-          "offset": 100000
-        },
-        "temperature": {
-          "type": "derived",
-          "source_field": "perlin_noise",
-          "operation": "scale",
-          "scale": 50,
-          "offset": 300
-        }
-      }
-    },
-    {
-      "type": "visualization",
-      "name": "ground_truth_render",
-      "source": "cfd_perlin_field",
-      "specification": {
-        "schema_version": "0.1.0",
-        "vis_type": "isosurface",
-        "field": "pressure",
-        "isovalue": 100000,
-        "color_by": "temperature",
-        "colormap": "coolwarm",
-        "color_range": [250, 350]
+      "vis_type": "isosurface",
+      "field": "Pres",
+      "isovalues": [
+        0.01, 0.011, 0.012, 0.013, 0.014, 0.015, 0.016, 0.017, 0.018, 0.019,
+        0.02
+      ],
+      "color_by": "Pres",
+      "colormap": "coolwarm",
+      "color_range": [0.0068, 0.0288],
+      "camera": {
+        "position": [25, 15, 20],
+        "focal_point": [0, 0, 0],
+        "view_up": [0, 0, 1]
       }
     }
   ],
   "metadata": {
     "difficulty": "easy",
-    "dataset": "wing_simulation",
-    "demonstrates": "basic_capability"
+    "demonstrates": "isosurface_with_scalar_coloring"
   }
 }

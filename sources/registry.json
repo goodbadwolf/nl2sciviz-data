@@ -1,0 +1,101 @@
+{
+  "schema_version": "0.1.0",
+  "datasets": {
+    "disk_out_ref": {
+      "name": "Heated Spinning Disk",
+      "short_description": "CFD simulation of heated spinning disk",
+      "long_description": "Computational fluid dynamics simulation of air flow around a heated and spinning disk. The simulation captures thermal convection, rotational flow, and chemical species transport in a CVD (Chemical Vapor Deposition) reactor.",
+      "domain": "cfd",
+      "source": {
+        "processed": "data/sources/processed/disk_out_ref.vtk",
+        "original": "data/sources/original/disk_out_ref.ex2",
+        "format": "vtk"
+      },
+      "grid": {
+        "type": "unstructured",
+        "num_points": 1990,
+        "num_cells": 1988,
+        "bounds": {
+          "x": [
+            -5.75,
+            5.75
+          ],
+          "y": [
+            -5.75,
+            5.75
+          ],
+          "z": [
+            -10.0,
+            10.16
+          ]
+        }
+      },
+      "fields": {
+        "Temp": {
+          "type": "scalar",
+          "description": "Temperature",
+          "range": [
+            293.15,
+            913.15
+          ],
+          "units": "K"
+        },
+        "V": {
+          "type": "vector",
+          "description": "Velocity field",
+          "components": 3,
+          "range": [
+            -19.95,
+            19.95
+          ],
+          "units": "m/s"
+        },
+        "Pres": {
+          "type": "scalar",
+          "description": "Pressure (normalized)",
+          "range": [
+            0.0068,
+            0.0288
+          ],
+          "units": "Pa"
+        },
+        "AsH3": {
+          "type": "scalar",
+          "description": "Arsine concentration",
+          "range": [
+            0.0805,
+            0.1848
+          ],
+          "units": "mol fraction"
+        },
+        "GaMe3": {
+          "type": "scalar",
+          "description": "Trimethylgallium concentration",
+          "range": [
+            0.0002,
+            0.0072
+          ],
+          "units": "mol fraction"
+        },
+        "CH4": {
+          "type": "scalar",
+          "description": "Methane concentration",
+          "range": [
+            0.0,
+            0.0012
+          ],
+          "units": "mol fraction"
+        },
+        "H2": {
+          "type": "scalar",
+          "description": "Hydrogen concentration",
+          "range": [
+            0.8076,
+            0.9177
+          ],
+          "units": "mol fraction"
+        }
+      }
+    }
+  }
+}
