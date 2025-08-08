@@ -1,0 +1,67 @@
+{
+  "type": "synthetic_data",
+  "name": "iso_pressure_field",
+  "synthetic_type": "perlin",
+  "grid": {
+    "type": "structured",
+    "dimensions": [
+      40,
+      40,
+      40
+    ],
+    "bounds": [
+      -1.0,
+      1.0,
+      -1.0,
+      1.0,
+      -1.0,
+      1.0
+    ],
+    "num_points": 64000,
+    "coordinate_system": "cartesian"
+  },
+  "fields": [
+    {
+      "name": "perlin_noise",
+      "type": "scalar",
+      "range": [
+        -1.0615006685256958,
+        1.0107333660125732
+      ],
+      "mean": 0.04481710121035576,
+      "std_dev": 0.4212438464164734
+    },
+    {
+      "name": "velocity",
+      "type": "vector",
+      "components": 3,
+      "magnitude_range": [
+        0.04456364957421005,
+        6.160201457535977
+      ],
+      "units": "m/s"
+    },
+    {
+      "name": "pressure",
+      "type": "scalar",
+      "range": [
+        57539.97265625,
+        140429.328125
+      ],
+      "mean": 101792.6875,
+      "std_dev": 16849.75390625,
+      "units": "Pa"
+    },
+    {
+      "name": "temperature",
+      "type": "scalar",
+      "range": [
+        258.15496826171875,
+        320.3219909667969
+      ],
+      "mean": 291.3445129394531,
+      "std_dev": 12.63731575012207,
+      "units": "K"
+    }
+  ]
+}
